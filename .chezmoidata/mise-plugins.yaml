@@ -1,0 +1,10 @@
+mise_plugins:
+  fedora:
+  - name: bitwarden
+    action: use -g
+  - name: bitwarden-secrets-manager
+    action: use -g
+  - name: starship
+    action: use -g
+  - name: usage
+    action: use -g

@@ -1,0 +1,33 @@
+completions:
+  directory:
+    bash: ~/.bashrc.d
+    fish: ~/.config/fish/completions
+    zsh: ~/.config/zsh/completions
+  default_args:
+    bash: completions bash
+    fish: completions fish
+    elvish: completions elvish
+    powershell: completions powershell
+    zsh: completions zsh
+  bash_completions:
+    bws:
+    chezmoi: completion bash
+    mise:
+    starship:
+  elvish_completions:
+    bws:
+    starship:
+  fish_completions:
+    bws:
+    chezmoi: completion fish
+    mise:
+    starship:
+  powershell_completions:
+    bws:
+    starship:
+  zsh_completions:
+    bw: completion --shell zsh
+    bws:
+    chezmoi: completion zsh
+    mise:
+    starship:

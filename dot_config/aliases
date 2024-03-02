@@ -1,0 +1,2 @@
+alias s="kitty +kitten ssh"
+alias k=kubectl

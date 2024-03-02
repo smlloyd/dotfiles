@@ -1,0 +1,17 @@
+---
+packages:
+  fedora:
+    - zsh
+    - autojump-zsh
+    - fish
+    - autojump-fish
+    - tmux
+    - neovim
+    - fzf
+    - ripgrep
+    - git-delta
+    - cargo
+    - npm
+    - jq
+    - pipx
+    - tox

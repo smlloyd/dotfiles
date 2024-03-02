@@ -1,0 +1,62 @@
+#!/bin/sh
+
+#*******************************************
+#  Generate shell completions from commands
+#*******************************************
+
+#********
+#  BASH
+#********
+
+{{ range $name, $val := .completions.bash_completions -}}
+{{ $args := default $.completions.default_args.bash $val -}}
+{{ $cmd1 := (printf "%v %v" $name $args) -}}
+{{ $cmd2 := (printf "mise exec %v -- %v" $name $cmd1) | quote -}}
+{{ $cmd1 := $cmd1 | quote -}}
+if eval {{ $cmd1 }} &>/dev/null; then
+  eval {{ $cmd1 }} >{{ $.completions.directory.bash }}/{{ $name }}-completions.sh
+elif eval {{ $cmd2 }} &> /dev/null; then
+  eval {{ $cmd2 }} >{{ $.completions.directory.bash }}/{{ $name }}-completions.sh
+else
+  echo "Error generating bash completions for {{ $name }}!"
+fi
+
+{{ end -}}
+
+#********
+#  FISH
+#********
+
+{{ range $name, $val := .completions.fish_completions -}}
+{{ $args := default $.completions.default_args.fish $val -}}
+{{ $cmd1 := (printf "%v %v" $name $args) -}}
+{{ $cmd2 := (printf "mise exec %v -- %v" $name $cmd1) | quote -}}
+{{ $cmd1 := $cmd1 | quote -}}
+if eval {{ $cmd1 }} &>/dev/null; then
+  eval {{ $cmd1 }} >{{ $.completions.directory.fish }}/{{ $name }}.fish
+elif eval {{ $cmd2 }} &> /dev/null; then
+  eval {{ $cmd2 }} >{{ $.completions.directory.fish }}/{{ $name }}.fish
+else
+  echo "Error generating fish completions for {{ $name }}!"
+fi
+
+{{ end -}}
+
+#********
+#  ZSH
+#********
+
+{{ range $name, $val := .completions.zsh_completions -}}
+{{ $args := default $.completions.default_args.zsh $val -}}
+{{ $cmd1 := (printf "%v %v" $name $args) -}}
+{{ $cmd2 := (printf "mise exec %v -- %v" $name $cmd1) | quote -}}
+{{ $cmd1 := $cmd1 | quote -}}
+if eval {{ $cmd1 }} &>/dev/null; then
+  eval {{ $cmd1 }} >{{ $.completions.directory.zsh }}/_{{ $name }}
+elif eval {{ $cmd2 }} &> /dev/null; then
+  eval {{ $cmd2 }} >{{ $.completions.directory.zsh }}_{{ $name }}
+else
+  echo "Error generating zsh completions for {{ $name }}!"
+fi
+
+{{ end -}}

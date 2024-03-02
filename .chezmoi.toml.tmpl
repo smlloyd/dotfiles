@@ -1,0 +1,13 @@
+{{- $codespaces:= env "CODESPACES" | not | not -}}
+{{- $vagrant:= env "USER" | eq "vagrant" -}}
+sourceDir = {{ .chezmoi.sourceDir | quote }}
+
+[data]
+  codespaces = {{ $codespaces }}
+  vagrant = {{ $vagrant }}
+
+[hooks.read-source-state.pre]
+  command = "{{ .chezmoi.sourceDir }}/.install-password-manager.sh"
+
+[scriptEnv]
+VAGRANT = {{ $vagrant | quote }}

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+{{ if eq .chezmoi.os "darwin" -}}
+# macOS-specific code
+{{ else if eq .chezmoi.os "linux" -}}
+{{   if eq .chezmoi.osRelease.id "debian" -}}
+# Debian-specific code
+sudo apt install -y {{ .packages.debian | join " " }}
+{{   else if eq .chezmoi.osRelease.id "fedora" -}}
+sudo dnf install -y {{ .packages.fedora | join " " }}
+{{   end -}}
+{{ end -}}
