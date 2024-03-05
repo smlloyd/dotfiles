@@ -15,3 +15,9 @@ packages:
     - jq
     - pipx
     - tox
+  rhel:
+    - zsh
+    - autojump-zsh
+    - fish
+    - autojump-fish
+    - tmux

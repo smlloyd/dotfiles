@@ -17,9 +17,9 @@ set -eu
 mise -y {{ .action}} {{ .name }}
 {{     end -}}
 
-{{-  else if eq .chezmoi.osRelease.id "redhat" -}}
-# Fedora-specific code
-{{     range .mise_plugins.redhat -}}
+{{-  else if eq .chezmoi.osRelease.id "rhel" -}}
+# RHEL-specific code
+{{     range .mise_plugins.rhel -}}
 mise -y {{ .action}} {{ .name }}
 {{     end -}}
 {{   end -}}

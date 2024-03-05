@@ -10,7 +10,7 @@ mise_plugins:
     action: use -g
   - name: lazygit
     action: use -g
-  redhat:
+  rhel:
   - name: bitwarden
     action: use -g
   - name: bitwarden-secrets-manager

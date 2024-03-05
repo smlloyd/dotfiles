@@ -10,5 +10,7 @@ set -eu
 sudo apt install -y {{ .packages.debian | join " " }}
 {{   else if eq .chezmoi.osRelease.id "fedora" -}}
 sudo dnf install -y {{ .packages.fedora | join " " }}
+{{   else if eq .chezmoi.osRelease.id "rhel" -}}
+sudo dnf install -y {{ .packages.rhel | join " " }}
 {{   end -}}
 {{ end -}}
