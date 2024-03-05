@@ -61,7 +61,8 @@ disabled = true
 
 [kubernetes]
 format = '[$symbol$context( \($namespace\))]($style) '
-detect_extensions = ['yaml', 'yml']
+detect_extensions = ['yml', 'yaml']
+detect_files = ['!mkdocs.yml', '!mkdocs.yaml']
 disabled = false
 
 [vagrant]
