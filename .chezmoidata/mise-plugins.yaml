@@ -8,3 +8,5 @@ mise_plugins:
     action: use -g
   - name: usage
     action: use -g
+  - name: lazygit
+    action: use -g
