@@ -27,6 +27,10 @@ fi
 #  FISH
 #********
 
+{{ $dir := $.completions.directory.fish -}}
+if [ ! -e {{ $dir }} ]; then
+  mkdir -p {{ $dir }}
+fi
 {{ range $name, $val := .completions.fish_completions -}}
 {{ $args := default $.completions.default_args.fish $val -}}
 {{ $cmd1 := (printf "%v %v" $name $args) -}}

@@ -14,5 +14,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo dnf install -y git curl unzip
     su vagrant -c 'bash /vagrant/install.sh'
+    sudo chsh vagrant -s /usr/bin/fish
   SHELL
 end

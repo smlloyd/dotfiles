@@ -1,0 +1,3 @@
+{{- if (index . "accessToken") -}}
+{{ (bitwardenSecrets "ca5afc81-615c-456c-aa06-b12a00d74d37" .accessToken).value }}
+{{- end -}}
