@@ -2,17 +2,26 @@
 
 set -eu
 
-# See here for a list of plugins:
-# https://github.com/mise-plugins/registry
+# See here for a list of plugins: https://github.com/mise-plugins/registry
 
-{{ if eq .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" -}}
 # macOS-specific code
-{{ else if eq .chezmoi.os "linux" }}
-{{   if eq .chezmoi.osRelease.id "debian" }}
+
+{{- else if eq .chezmoi.os "linux" -}}
+{{   if eq .chezmoi.osRelease.id "debian" -}}
 # Debian-specific code
-{{   else if eq .chezmoi.osRelease.id "fedora" -}}
-{{ range .mise_plugins.fedora -}}
+
+{{-  else if eq .chezmoi.osRelease.id "fedora" -}}
+# Fedora-specific code
+{{     range .mise_plugins.fedora -}}
 mise -y {{ .action}} {{ .name }}
+{{     end -}}
+
+{{-  else if eq .chezmoi.osRelease.id "redhat" -}}
+# Fedora-specific code
+{{     range .mise_plugins.redhat -}}
+mise -y {{ .action}} {{ .name }}
+{{     end -}}
+{{   end -}}
+
 {{ end -}}
-{{   end }}
-{{ end }}
