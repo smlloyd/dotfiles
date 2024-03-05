@@ -30,9 +30,12 @@ style = 'cyan'
 
 [username]
 format = ' [$user]($style)'
+style_user = '243'
+style_root = 'red'
 
 [hostname]
 format = '[@$hostname]($style)'
+style = '243'
 
 [git_branch]
 style = 'green'
