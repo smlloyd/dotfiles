@@ -6,13 +6,13 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 [data]
   codespaces = {{ $codespaces }}
   vagrant = {{ $vagrant }}
-{{ if stdinIsATTY -}}
-{{ $accessToken := promptStringOnce . "accessToken" "Bitwarden Secrets access token" -}}
+{{- if stdinIsATTY -}}
+{{-   $accessToken := promptStringOnce . "accessToken" "Bitwarden Secrets access token" }}
   accessToken = {{ $accessToken | quote }}
-{{ end -}}
+{{- end }}
 
 [hooks.read-source-state.pre]
   command = "{{ .chezmoi.sourceDir }}/.install-password-manager.sh"
 
 [scriptEnv]
-VAGRANT = {{ $vagrant | quote }}
+  VAGRANT = {{ $vagrant | quote }}

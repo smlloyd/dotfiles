@@ -8,12 +8,6 @@ shell = "zsh"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
-[plugins.powerlevel10k]
-github = "romkatv/powerlevel10k"
-
-[plugins.zsh-abbr]
-github = "olets/zsh-abbr"
-
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
@@ -33,6 +27,9 @@ apply = ["defer"]
 
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
+
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
 apply = ["defer"]
 
 [plugins.sudo]
@@ -42,6 +39,9 @@ apply = ["defer"]
 [plugins.extract]
 remote = 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh'
 apply = ["defer"]
+
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
 
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
