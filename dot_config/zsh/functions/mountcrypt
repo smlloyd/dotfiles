@@ -1,0 +1,17 @@
+mountcrypt()
+{
+  SRC=~/gDrive/private/.crypt
+  DEST=~/crypt
+
+  if findmnt -rno TARGET ${DEST} > /dev/null; then
+    fusermount -u ${DEST} && rmdir ${DEST}
+  elif [ -d ${SRC} ]; then
+    mkdir ${DEST}
+    encfs ${SRC} ${DEST}
+    if [ $? -ne 0 ]; then
+      echo "Something went wrong while mounting with encfs!"
+      rmdir ${DEST}
+    fi
+  fi
+}
+# vim: ft=bash
