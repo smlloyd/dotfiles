@@ -1,0 +1,12 @@
+{{ $version := (gitHubLatestRelease "rossmacarthur/sheldon").TagName -}}
+{{ $arch := .chezmoi.arch -}}
+{{ if eq .chezmoi.arch "amd64" -}}
+{{    $arch = "x86_64" -}}
+{{ end -}}
+
+[".local/bin/sheldon"]
+    type = "archive-file"
+    url = "https://github.com/rossmacarthur/sheldon/releases/download/{{ $version }}/sheldon-{{ $version }}-{{ $arch }}-unknown-{{ .chezmoi.os }}-musl.tar.gz"
+    refreshPeriod = "168h"
+    path = "sheldon"
+    executable = true
