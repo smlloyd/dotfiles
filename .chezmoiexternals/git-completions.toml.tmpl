@@ -1,0 +1,8 @@
+[".bashrc.d/git-completions.sh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/git/git/{{ (gitHubLatestTag "git/git").Name }}/contrib/completion/git-completion.bash"
+    refreshPeriod = "168h"
+[".config/zsh/completions/_git"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/git/git/{{ (gitHubLatestTag "git/git").Name }}/contrib/completion/git-completion.zsh"
+    refreshPeriod = "168h"
