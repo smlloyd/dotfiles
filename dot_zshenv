@@ -1,1 +1,7 @@
-source ~/.config/zsh/.zshenv
+CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+
+if [[ -r "${CONFIG_HOME}/zsh/.zshenv" ]]; then
+  source "${CONFIG_HOME}/zsh/.zshenv"
+fi
+
+# vim: ft=bash

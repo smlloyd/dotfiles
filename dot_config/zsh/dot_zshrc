@@ -1,11 +1,22 @@
 #!/usr/bin/env zsh
- 
+
+CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${CACHE_HOME}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+
+# Completions style
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
 
 ### Load external tools first
 
@@ -13,30 +24,30 @@ if command -v mise 1>/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
+export SHELDON_CONFIG_DIR="${CONFIG_HOME}/sheldon/zsh"
+export SHELDON_DATA_DIR="${DATA_HOME}/sheldon/zsh"
+ 
 if command -v sheldon  1>/dev/null 2>&1; then
   eval "$(sheldon source)"
 fi
 
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Aliases
 
-[[ -f ~/.config/aliases ]] && source ~/.config/aliases
+[[ -f ${CONFIG_HOME}/aliases ]] && source ${CONFIG_HOME}/aliases
 
 # Add personal functions and completions to fpath
 
-if [[ ( -d ~/.config/zsh/.zshrc.d ) && ( -n "$(ls -A ~/.config/zsh/.zshrc.d)" ) ]]; then
-	for rc in ~/.config/zsh/.zshrc.d/*; do
+if [[ ( -d ${CONFIG_HOME}/zsh/.zshrc.d ) && ( -n "$(ls -A ${CONFIG_HOME}/zsh/.zshrc.d)" ) ]]; then
+	for rc in ${CONFIG_HOME}/zsh/.zshrc.d/*; do
 		if [ -f "$rc" ]; then
 			. "$rc"
 		fi
 	done
 fi
 
-fpath=( ~/.config/zsh/functions "${fpath[@]}" )
-fpath=( ~/.config/zsh/completions "${fpath[@]}" )
+fpath=( ${CONFIG_HOME}/zsh/functions "${fpath[@]}" )
+fpath=( ${CONFIG_HOME}/zsh/completions "${fpath[@]}" )
 autoload -Uz $fpath[1,2]/*(.:t)
 
 autoload -Uz compinit
@@ -51,7 +62,7 @@ fi
 ### p10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+[[ ! -f ${CONFIG_HOME}/zsh/.p10k.zsh ]] || source ${CONFIG_HOME}/zsh/.p10k.zsh
 
 ### End of p10k
 

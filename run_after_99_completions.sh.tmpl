@@ -58,7 +58,7 @@ fi
 if eval {{ $cmd1 }} &>/dev/null; then
   eval {{ $cmd1 }} >{{ $.completions.directory.zsh }}/_{{ $name }}
 elif eval {{ $cmd2 }} &> /dev/null; then
-  eval {{ $cmd2 }} >{{ $.completions.directory.zsh }}_{{ $name }}
+  eval {{ $cmd2 }} >{{ $.completions.directory.zsh }}/_{{ $name }}
 else
   echo "Error generating zsh completions for {{ $name }}!"
 fi

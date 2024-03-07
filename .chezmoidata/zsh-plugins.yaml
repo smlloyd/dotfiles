@@ -1,0 +1,37 @@
+zsh_plugins:
+  - name: zsh-defer
+    author: romkatv
+    tag: master
+    include:
+      - "*/*.zsh"
+      - "*/README.md"
+  - name: powerlevel10k
+    author: romkatv
+    tag: LatestRelease
+  - name: zsh-abbr
+    author: olets
+    tag:  master
+  - name: fast-syntax-highlighting
+    author: zdharma-continuum
+    tag: LatestTag
+  - name: history-search-multi-word
+    author: zdharma-continuum
+    tag: main
+  - name: zsh-completions
+    author: zsh-users
+    tag: LatestRelease
+  - name: zsh-autosuggestions
+    author: zsh-users
+    tag: LatestTag
+  - name: ohmyzsh
+    author: ohmyzsh
+    tag: master
+    include:
+      - "*/plugins"
+      - "*/plugins/sudo/**"
+      - "*/plugins/extract/**"
+  - name: zsh-vi-mode
+    author:  jeffreytse
+    tag: LatestRelease
+    include:
+      - "*/*.zsh"

@@ -25,12 +25,9 @@ github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
-[plugins.sudo]
-remote = 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh'
-apply = ["defer"]
-
-[plugins.extract]
-remote = 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh'
+[plugins.ohmyzsh]
+github = "ohmyzsh/ohmyzsh"
+use = ["plugins/sudo/*.zsh", "plugins/extract/*.zsh"]
 apply = ["defer"]
 
 [plugins.zsh-abbr]
