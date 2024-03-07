@@ -15,9 +15,6 @@ packages:
     - jq
     - pipx
     - tox
+    - bat
   rhel:
     - zsh
-    - autojump-zsh
-    - fish
-    - autojump-fish
-    - tmux

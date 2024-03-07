@@ -25,13 +25,6 @@ github = "zsh-users/zsh-autosuggestions"
 use = ["{{ name }}.zsh"]
 apply = ["defer"]
 
-[plugins.zsh-vi-mode]
-github = "jeffreytse/zsh-vi-mode"
-
-[plugins.zsh-abbr]
-github = "olets/zsh-abbr"
-apply = ["defer"]
-
 [plugins.sudo]
 remote = 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh'
 apply = ["defer"]
@@ -39,6 +32,12 @@ apply = ["defer"]
 [plugins.extract]
 remote = 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/extract/extract.plugin.zsh'
 apply = ["defer"]
+
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+
+[plugins.zsh-vi-mode]
+github = "jeffreytse/zsh-vi-mode"
 
 [plugins.powerlevel10k]
 github = "romkatv/powerlevel10k"
