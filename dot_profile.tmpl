@@ -29,26 +29,9 @@ fi
 # set neovim as default editor
 command -v nvim 1>/dev/null 2>&1 && export EDITOR=nvim
 
-# "work" prefix
-[ -d $HOME/private/work ] && WORK_PREFIX=$HOME/private/work
-[ -d $HOME/net/private/work ] && WORK_PREFIX=$HOME/net/private/work
-
-# these next few only make sense if $WORK_PREFIX exists
-if [ ! -z $WORK_PREFIX ]; then
-	# work bin dir
-	PATH=$WORK_PREFIX/bin:$PATH
-
-	# LaTeX stuff
-	[ -d $WORK_PREFIX/LaTeX/texinputs ] && export TEXINPUTS=".:$WORK_PREFIX/writing/LaTeX/texinputs:"
-	[ -d $WORK_PREFIX/LaTeX/bib ] && export BIBINPUTS=".:$WORK_PREFIX/writing/LaTeX/bib:"
-	[ -d $WORK_PREFIX/LaTeX/bst ] && export BSTINPUTS=".:$WORK_PREFIX/writing/LaTeX/bst:"
-
-	# SAC - Seismic Analysis Code
-	if [ -d "$WORK_PREFIX/software/sac" ]; then
-		PATH=$WORK_PREFIX/software/sac/bin:$PATH
-		export SACAUX=$WORK_PREFIX/software/sac/aux
-		export SAC_DISPLAY_COPYRIGHT=0
-	fi
-fi
+# LaTeX stuff
+[ -d "${HOME}/Documents/LaTeX/texinputs" ] && export TEXINPUTS=".:${HOME}/Documents/LaTeX/texinputs:"
+[ -d "${HOME}/Documents/LaTeX/bib" ] && export BIBINPUTS=".:${HOME}/Documents/LaTeX/bib:"
+[ -d "${HOME}/Documents/LaTeX/bst" ] && export BSTINPUTS=".:${HOME}/Documents/LaTeX/bst:"
 
 # vim: ft=bash

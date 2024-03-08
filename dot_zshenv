@@ -1,7 +1,4 @@
-CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
-
-if [[ -r "${CONFIG_HOME}/zsh/.zshenv" ]]; then
-  source "${CONFIG_HOME}/zsh/.zshenv"
-fi
+[[ -r "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshenv" ]] && \
+   source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshenv" 
 
 # vim: ft=bash

@@ -1,2 +1,4 @@
 alias s="kitty +kitten ssh"
 alias k=kubectl
+# fzf aliases
+alias fedit="fzf --preview 'bat --style=numbers --color=always {}' | xargs -n 1 $EDITOR"
