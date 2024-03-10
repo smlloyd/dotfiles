@@ -16,5 +16,6 @@ packages:
     - pipx
     - tox
     - bat
+    - fd-find
   rhel:
     - zsh
